@@ -1,12 +1,39 @@
 package basic;
-
 /**
  * Created by jyheo on 2016-03-22.
  */
 public class SetOperation {
     public static int[] union(int[] A, int[] B) {
         // TODO: return union of set A and B
-        return new int[0];
+        int[] C = new int[A.length + B.length];
+        int iCnum;
+
+        for (int i = 0; i < A.length; i++) {
+            C[i] = A[i];
+        }
+        iCnum = A.length;
+
+        for (int i = 0; i < B.length; i++) {
+
+            boolean bExist = false;
+            for (int j = 0; j < A.length; j++) {
+                if (B[i] == A[j]) {
+                    bExist = true;
+                    break;
+                }
+            }
+            if (bExist == false) {
+                C[iCnum] = B[i];
+                iCnum++;
+            }
+
+        }
+
+        int[] RC = new int[iCnum];
+        for (int i = 0; i < RC.length; i++)
+            RC[i] = C[i];
+
+        return RC;
     }
 
     public static int[] intersection(int[] A, int[] B) {
