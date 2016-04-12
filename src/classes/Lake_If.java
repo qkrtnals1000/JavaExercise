@@ -88,7 +88,7 @@ public class Lake_If {
         movables[movables_num++] = m;
     }
 
-    public void moveFish() {
+    public void moveObjects() {
         for (int i = 0; i < movables_num; i++)
             movables[i].move(width, height);
     }
