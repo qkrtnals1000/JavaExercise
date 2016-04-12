@@ -26,6 +26,8 @@ interface Drawable {
     void display(int x, int y);
 }
 
+interface MoveDrawable extends Movable, Drawable {}
+
 class MyRock extends MyObject implements Drawable {
     public MyRock(String name, String shape, int x, int y) {
         super(name, shape, x, y);
@@ -38,7 +40,7 @@ class MyRock extends MyObject implements Drawable {
     }
 }
 
-class MyFish extends MyObject implements Movable, Drawable {
+class MyFish extends MyObject implements MoveDrawable {
     public MyFish(String name, String shape, int x, int y) {
         super(name, shape, x, y);
     }
@@ -95,9 +97,9 @@ public class Lake_If {
 
     public void addObject(MyObject obj) {
         if (obj instanceof Movable)
-            addMovable(obj);
+            addMovable((Movable)obj);
         if (obj instanceof Drawable)
-            addDrawable(obj);
+            addDrawable((Drawable)obj);
     }
 
     public void moveObjects() {
@@ -136,7 +138,7 @@ public class Lake_If {
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            lake.moveFish();
+            lake.moveObjects();
             lake.display();
             scanner.next();
         }
