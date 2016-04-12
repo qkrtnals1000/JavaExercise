@@ -87,6 +87,18 @@ public class Lake_If {
             return;
         movables[movables_num++] = m;
     }
+    
+    public void addMoveDrawable(MoveDrawable md) {
+        addDrawable(md);
+        addMovable(md);
+    }
+
+    public void addObject(MyObject obj) {
+        if (obj instanceof Movable)
+            addMovable(obj);
+        if (obj instanceof Drawable)
+            addDrawable(obj);
+    }
 
     public void moveObjects() {
         for (int i = 0; i < movables_num; i++)
@@ -114,9 +126,13 @@ public class Lake_If {
     public static void main(String args[]) {
         Lake_If lake = new Lake_If(80, 20);
         MyFish f = new MyFish("FIsh", "<#--<", 1, 1);
-        lake.addDrawable(f);
-        lake.addMovable(f);
+        lake.addMoveDrawable(f);
         lake.addDrawable(new MyRock("Rock", "(##)", 10, 10));
+
+        MyFish f2 = new MyFish("Fish", "<@-<", 4, 4);
+        MyRock r2 = new MyRock("Rock", "[@@]", 11, 15);
+        lake.addObject(f2);
+        lake.addObject(r2);
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
