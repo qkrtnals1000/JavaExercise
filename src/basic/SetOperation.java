@@ -25,6 +25,7 @@ public class SetOperation {
 
         }
 
+
         int[] RC = new int[n];
         for(int i = 0; i < RC.length; i++)
             RC[i] = C[i];
