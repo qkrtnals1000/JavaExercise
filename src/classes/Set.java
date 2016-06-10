@@ -39,6 +39,7 @@ public class Set {
             // it will be garbage-collected.
         }
     }
+    
 
     public boolean isMember(int a) {
         for (int i = 0; i < size; i++)
